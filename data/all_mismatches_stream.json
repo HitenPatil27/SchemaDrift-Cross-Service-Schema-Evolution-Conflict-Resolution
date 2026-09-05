@@ -136,7 +136,7 @@
   {
     "record_id": "mix_009",
     "service": "performance",
-    "service_name": "checkout_api",
+    "service_id": "checkout_api",
     "latency": 1500,
     "latency_unit": "milliseconds",
     "timestamp": 1705316400,
@@ -337,7 +337,7 @@
   {
     "record_id": "mix_021",
     "service": "performance",
-    "service_name": "auth_service",
+    "service_id": "auth_service",
     "latency": 2500,
     "latency_unit": "milliseconds",
     "timestamp": 1705316401,

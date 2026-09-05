@@ -377,4 +377,5 @@ rec_004 / analytics-service  : SEMANTIC_INCOMPATIBLE  -> RELEASED     (v4, fixed
 
 **Language:** Python + Groq SDK (single external dependency)
 **AI Model:** Qwen 3.8 27B via Groq (free tier, fast inference)
-**Assertions:** 27/27 passing (17 rule-based + 6 matrix + 4 self-healing autonomous assertions)
+**Assertions:** 28/28 passing (18 rule-based including rolling deployment + 6 matrix + 4 self-healing)
+**Note:** AI-dependent assertions (Steps 6a–6e) require a valid GROQ_API_KEY; they are skipped gracefully if unavailable.

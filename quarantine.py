@@ -187,10 +187,19 @@ class CorrectionJob:
             consumer = self.registry.get_consumer(entry.consumer_id)
 
             # Re-run full compatibility via engine
-            check_results = self.engine.check_record(
-                record=entry.record,
-                producer_schema_key=entry.producer_schema_version,
-            )
+            try:
+                check_results = self.engine.check_record(
+                    record=entry.record,
+                    producer_schema_key=entry.producer_schema_version,
+                )
+            except Exception as e:
+                self.store.mark_manual_review(entry)
+                result.still_quarantined += 1
+                result.details.append(
+                    f"  {entry.record_id}/{entry.consumer_id}: "
+                    f"unresolvable schema contract -> remains quarantined"
+                )
+                continue
 
             # Find the result for this specific consumer
             consumer_result = None

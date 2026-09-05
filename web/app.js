@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // SRE Report modal
   const btnGenReport = document.getElementById("btn-gen-report");
+  const btnRunCorrection = document.getElementById("btn-run-correction");
   const reportModal = document.getElementById("report-modal");
   const modalReportContent = document.getElementById("modal-report-content");
   const btnCloseModal = document.getElementById("btn-close-modal");
@@ -292,6 +293,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   btnCloseModal.addEventListener("click", () => (reportModal.style.display = "none"));
   btnDoneModal.addEventListener("click", () => (reportModal.style.display = "none"));
+
+  // --- Correction Job ---
+  btnRunCorrection.addEventListener("click", async () => {
+    reportModal.style.display = "flex";
+    modalReportContent.innerHTML = `<div class="loading-spinner"></div> Running Correction Job on all quarantined records...`;
+
+    try {
+      const resp = await fetch("/api/quarantine/correct", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({}),
+      });
+      const data = await resp.json();
+      if (data.error) {
+        modalReportContent.textContent = "Error: " + data.error;
+      } else {
+        let report = "=== CORRECTION JOB RESULTS ===\n\n";
+        report += `Total Scanned:      ${data.total_scanned}\n`;
+        report += `Released:           ${data.released}\n`;
+        report += `Still Quarantined:  ${data.still_quarantined}\n\n`;
+        if (data.details && data.details.length > 0) {
+          report += "Details:\n";
+          data.details.forEach((d) => { report += d + "\n"; });
+        }
+        if (data.total_scanned === 0) {
+          report += "No quarantined records found. Process a batch with drift first.";
+        }
+        modalReportContent.textContent = report;
+      }
+    } catch (err) {
+      modalReportContent.textContent = "Network error: " + err.message;
+    }
+  });
 
   btnCopyReport.addEventListener("click", () => {
     navigator.clipboard.writeText(modalReportContent.textContent);

@@ -311,6 +311,15 @@ def main() -> None:
 
     registry.register_schema(make_v4())
 
+    # Rolling deployment: register an UPGRADED consumer that already
+    # expects v4 (dollars). This coexists with old consumers (v1/cents)
+    # during the rolling update window.
+    registry.register_consumer(Consumer(
+        consumer_id="upgraded-billing",
+        expected_schema_version="payment:v4",
+        active=True,
+    ))
+
     record_4 = {
         "user_id": "user_42",
         "amount": 15.00,       # $15.00 as dollars (float)
@@ -344,6 +353,7 @@ def main() -> None:
 
     structural_results = [r for r in results if r.verdict == Verdict.STRUCTURAL_BREAK]
     semantic_results = [r for r in results if r.verdict == Verdict.SEMANTIC_INCOMPATIBLE]
+    safe_results = [r for r in results if r.verdict == Verdict.SAFE_EVOLUTION]
 
     assert_check(
         len(structural_results) == 0,
@@ -351,7 +361,11 @@ def main() -> None:
     )
     assert_check(
         len(semantic_results) == 2,
-        "Semantic check FAILS for both consumers (cents!=dollars, no transform)",
+        "Semantic check FAILS for old consumers (cents!=dollars, no transform)",
+    )
+    assert_check(
+        len(safe_results) == 1 and safe_results[0].consumer_id == "upgraded-billing",
+        "Rolling deployment: upgraded consumer compatible with v4, old consumers blocked",
     )
     assert_check(
         len(store.quarantined_entries()) == 4,
