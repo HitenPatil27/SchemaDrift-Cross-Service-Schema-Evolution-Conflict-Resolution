@@ -1,10 +1,5 @@
 # SchemaDrift — Cross-Service Semantic Drift Detection & Autonomous AI Self-Healing
 
-[![Status](https://img.shields.io/badge/Status-Production%20Ready-success)]()
-[![Tests](https://img.shields.io/badge/Tests-27%2F27%20Passing-brightgreen)]()
-[![AI Engine](https://img.shields.io/badge/AI%20Engine-Groq%20Qwen%203.8%2027B%20%2F%20Llama%203.3-blueviolet)]()
-[![UI](https://img.shields.io/badge/UI-Modern%20Dark%20Glassmorphic%20Dashboard-cyan)]()
-
 > **SchemaDrift** is an enterprise-grade distributed mediator that eliminates the most dangerous class of microservice bugs: **silent semantic drift** during rolling deployments. When services remain syntactically healthy on the wire while interpreting the same data with conflicting business meanings, SchemaDrift intercepts the divergence, prevents corrupted data from reaching downstream consumers, and synthesizes autonomous JIT self-healing adapters via Groq AI in real time.
 
 ---
