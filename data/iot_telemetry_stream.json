@@ -1,0 +1,299 @@
+[
+  {
+    "device_id": "sensor_alpha_01",
+    "temperature": 24.5,
+    "unit": "celsius",
+    "latency": 12,
+    "latency_unit": "milliseconds",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "celsius",
+      "type": "float"
+    }
+  },
+  {
+    "device_id": "sensor_alpha_02",
+    "temperature": 22.0,
+    "unit": "celsius",
+    "latency": 15,
+    "latency_unit": "milliseconds",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "celsius",
+      "type": "float"
+    }
+  },
+  {
+    "device_id": "sensor_alpha_03",
+    "temperature": 26.1,
+    "unit": "celsius",
+    "latency": 9,
+    "latency_unit": "milliseconds",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "celsius",
+      "type": "float"
+    }
+  },
+  {
+    "temperature": 23.0,
+    "unit": "celsius",
+    "latency": 14,
+    "latency_unit": "milliseconds",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "celsius",
+      "type": "float"
+    }
+  },
+  {
+    "device_id": "sensor_beta_05",
+    "temperature": 77.0,
+    "unit": "fahrenheit",
+    "latency": 1500,
+    "latency_unit": "milliseconds",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "fahrenheit",
+      "type": "float"
+    }
+  },
+  {
+    "device_id": "sensor_beta_06",
+    "temperature": 68.0,
+    "unit": "fahrenheit",
+    "latency": 2500,
+    "latency_unit": "milliseconds",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "fahrenheit",
+      "type": "float"
+    }
+  },
+  {
+    "device_id": "sensor_beta_07",
+    "temperature": 86.0,
+    "unit": "fahrenheit",
+    "latency": 800,
+    "latency_unit": "milliseconds",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "fahrenheit",
+      "type": "float"
+    }
+  },
+  {
+    "device_id": "sensor_beta_08",
+    "temperature": 95.0,
+    "unit": "fahrenheit",
+    "latency": 3200,
+    "latency_unit": "milliseconds",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "fahrenheit",
+      "type": "float"
+    }
+  },
+  {
+    "device_id": "sensor_beta_09",
+    "temperature": 104.0,
+    "unit": "fahrenheit",
+    "latency": 1100,
+    "latency_unit": "milliseconds",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "fahrenheit",
+      "type": "float"
+    }
+  },
+  {
+    "device_id": "sensor_gamma_10",
+    "temperature": 25.0,
+    "unit": "celsius",
+    "latency": 18,
+    "latency_unit": "milliseconds",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "celsius",
+      "type": "float"
+    }
+  },
+  {
+    "temperature": 72.5,
+    "unit": "fahrenheit",
+    "latency": 15,
+    "latency_unit": "milliseconds",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "fahrenheit",
+      "type": "float"
+    }
+  },
+  {
+    "device_id": "sensor_gamma_12",
+    "temperature": 59.0,
+    "unit": "fahrenheit",
+    "latency": 1500,
+    "latency_unit": "milliseconds",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "fahrenheit",
+      "type": "float"
+    }
+  },
+  {
+    "device_id": "sensor_gamma_13",
+    "temperature": 50.0,
+    "unit": "fahrenheit",
+    "latency": 1400,
+    "latency_unit": "milliseconds",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "fahrenheit",
+      "type": "float"
+    }
+  },
+  {
+    "device_id": "sensor_gamma_14",
+    "temperature": 21.0,
+    "unit": "celsius",
+    "latency": 22,
+    "latency_unit": "milliseconds",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "celsius",
+      "type": "float"
+    }
+  },
+  {
+    "device_id": "sensor_delta_15",
+    "temperature": 80.6,
+    "unit": "fahrenheit",
+    "latency": 4500,
+    "latency_unit": "milliseconds",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "fahrenheit",
+      "type": "float"
+    }
+  },
+  {
+    "device_id": "sensor_delta_16",
+    "temperature": 23.5,
+    "unit": "celsius",
+    "latency": 10,
+    "latency_unit": "milliseconds",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "celsius",
+      "type": "float"
+    }
+  },
+  {
+    "device_id": "sensor_delta_17",
+    "temperature": 98.6,
+    "unit": "fahrenheit",
+    "latency": 1200,
+    "latency_unit": "milliseconds",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "fahrenheit",
+      "type": "float"
+    }
+  },
+  {
+    "device_id": "sensor_delta_18",
+    "temperature": 75.2,
+    "unit": "fahrenheit",
+    "latency": 950,
+    "latency_unit": "milliseconds",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "fahrenheit",
+      "type": "float"
+    }
+  },
+  {
+    "temperature": 20.0,
+    "unit": "celsius",
+    "latency": 11,
+    "latency_unit": "milliseconds",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "celsius",
+      "type": "float"
+    }
+  },
+  {
+    "device_id": "sensor_epsilon_20",
+    "temperature": 82.4,
+    "unit": "fahrenheit",
+    "latency": 2100,
+    "latency_unit": "milliseconds",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "fahrenheit",
+      "type": "float"
+    }
+  }
+]

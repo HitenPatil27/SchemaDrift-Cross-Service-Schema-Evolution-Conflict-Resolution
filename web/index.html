@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SchemaDrift — Cross-Service Semantic Drift Detection & Autonomous AI Self-Healing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Ambient background glow effects -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">
+            <span>Schema</span><span class="gradient-text">Drift</span>
+            <span class="badge badge-accent">Unified SRE Dashboard</span>
+          </div>
+          <div class="brand-subtitle">Cross-Service Semantic Evolution & Autonomous AI Self-Healing Pipeline</div>
+        </div>
+      </div>
+
+      <div class="header-meta">
+        <div class="status-pill status-online">
+          <span class="status-dot"></span>
+          <span>Two-Layer Engine Active</span>
+        </div>
+        <div class="status-pill status-ai">
+          <span class="ai-sparkle">✦</span>
+          <span>Groq Qwen 3.8 27B JIT</span>
+        </div>
+        <button id="btn-gen-report" class="btn btn-cyan">
+          <span class="ai-sparkle">✦</span> Generate SRE Incident Report
+        </button>
+      </div>
+    </header>
+
+    <!-- Upload & Dataset Launcher Section -->
+    <section class="upload-section card">
+      <div class="drop-zone" id="drop-zone">
+        <div class="drop-icon-box">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+          </svg>
+        </div>
+        <div class="drop-text-content">
+          <div class="drop-title">Upload Batch JSON File (20 to 50 Records)</div>
+          <div class="drop-subtitle">Drag & drop your JSON file here, or click to browse from the <code class="code-tag">data/</code> folder</div>
+        </div>
+        <input type="file" id="file-input" accept=".json" style="display: none;">
+      </div>
+
+      <!-- Quick Dataset Launcher -->
+      <div class="quick-datasets">
+        <span class="quick-label">⚡ Stage Datasets (from data/):</span>
+        <button class="btn-dataset active" data-dataset="payment_transactions_stream.json">
+          <span class="dataset-icon">💳</span>
+          <span>Payment Stream (Dollars vs Cents)</span>
+          <span class="badge badge-amber">25 Records</span>
+        </button>
+        <button class="btn-dataset" data-dataset="iot_telemetry_stream.json">
+          <span class="dataset-icon">🌡️</span>
+          <span>IoT Telemetry (°F vs °C)</span>
+          <span class="badge badge-violet">20 Records</span>
+        </button>
+        <button class="btn-dataset" data-dataset="ecommerce_orders_stream.json">
+          <span class="dataset-icon">📦</span>
+          <span>E-Commerce Orders (Status Enums)</span>
+          <span class="badge badge-cyan">15 Records</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- KPI Summary Metrics Ribbon -->
+    <section class="metrics-ribbon">
+      <div class="metric-card card">
+        <div class="metric-title">TOTAL RECORDS SCANNED</div>
+        <div class="metric-value" id="metric-total">25</div>
+        <div class="metric-sub" id="metric-contract">Consumer: payment:v1</div>
+      </div>
+      <div class="metric-card card border-green">
+        <div class="metric-title">COMPATIBLE / SAFE</div>
+        <div class="metric-value text-green" id="metric-safe">7</div>
+        <div class="metric-sub">Direct pass-through</div>
+      </div>
+      <div class="metric-card card border-red">
+        <div class="metric-title">STRUCTURAL BREAKS</div>
+        <div class="metric-value text-red" id="metric-structural">3</div>
+        <div class="metric-sub">Blocked & Quarantined safely</div>
+      </div>
+      <div class="metric-card card border-violet">
+        <div class="metric-title">SEMANTIC DRIFT (AI HEALED)</div>
+        <div class="metric-value text-violet" id="metric-healed">15</div>
+        <div class="metric-sub">100x Discrepancy Auto-Repaired</div>
+      </div>
+    </section>
+
+    <!-- Table Filter Controls -->
+    <section class="table-controls-bar">
+      <div class="table-heading">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <line x1="3" y1="9" x2="21" y2="9" />
+          <line x1="9" y1="21" x2="9" y2="9" />
+        </svg>
+        <span>Live Stream Audit & AI Mediation Breakdown</span>
+      </div>
+      <div class="filter-pills">
+        <button class="btn-filter active" data-filter="ALL">All Records (<span id="filter-all-cnt">25</span>)</button>
+        <button class="btn-filter" data-filter="SEMANTIC_HEALED">AI Healed (<span id="filter-healed-cnt">15</span>)</button>
+        <button class="btn-filter" data-filter="STRUCTURAL_BREAK">Blocked (<span id="filter-blocked-cnt">3</span>)</button>
+        <button class="btn-filter" data-filter="COMPATIBLE">Compatible (<span id="filter-safe-cnt">7</span>)</button>
+      </div>
+    </section>
+
+    <!-- Main Results Table -->
+    <main class="card table-card">
+      <div class="table-responsive">
+        <table class="audit-table" id="audit-table">
+          <thead>
+            <tr>
+              <th style="width: 22%;">1. Initial Input (Producer Sent)</th>
+              <th style="width: 32%;">2. Semantic Layer (Sender vs Receiver Contract)</th>
+              <th style="width: 24%;">3. How AI Changed That (JIT Synthesis)</th>
+              <th style="width: 22%;">4. Final Result Delivered to Consumer</th>
+            </tr>
+          </thead>
+          <tbody id="audit-tbody">
+            <!-- Populated via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- SRE Incident Report Modal -->
+  <div id="report-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span class="ai-sparkle">✦</span>
+          <span>AI-Generated SRE Incident Post-Mortem Report</span>
+        </div>
+        <button id="btn-close-modal" class="btn-close">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-report-content">
+        <div class="loading-spinner"></div> Synthesizing live SRE post-mortem report via Groq Qwen 3.8 27B...
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" id="btn-copy-report">Copy Markdown Report</button>
+        <button class="btn btn-primary" id="btn-done-modal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+[
+  {
+    "order_id": "ord_801",
+    "customer_id": "cust_101",
+    "status": "SUCCESS",
+    "status_type": "status_v1",
+    "total": 45.0,
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "SUCCESS",
+      "type": "string"
+    }
+  },
+  {
+    "order_id": "ord_802",
+    "customer_id": "cust_102",
+    "status": "SUCCESS",
+    "status_type": "status_v1",
+    "total": 12.5,
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "SUCCESS",
+      "type": "string"
+    }
+  },
+  {
+    "order_id": "ord_803",
+    "status": "ERROR",
+    "status_type": "status_v1",
+    "total": 99.0,
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "ERROR",
+      "type": "string"
+    }
+  },
+  {
+    "order_id": "ord_804",
+    "customer_id": "cust_104",
+    "status": "COMPLETED",
+    "status_type": "status_v2",
+    "total": 120.0,
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "COMPLETED",
+      "type": "string"
+    }
+  },
+  {
+    "order_id": "ord_805",
+    "customer_id": "cust_105",
+    "status": "COMPLETED",
+    "status_type": "status_v2",
+    "total": 54.0,
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "COMPLETED",
+      "type": "string"
+    }
+  },
+  {
+    "order_id": "ord_806",
+    "customer_id": "cust_106",
+    "status": "FAILED",
+    "status_type": "status_v2",
+    "total": 31.0,
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "FAILED",
+      "type": "string"
+    }
+  },
+  {
+    "order_id": "ord_807",
+    "customer_id": "cust_107",
+    "status": "SUCCESS",
+    "status_type": "status_v1",
+    "total": 18.0,
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "SUCCESS",
+      "type": "string"
+    }
+  },
+  {
+    "order_id": "ord_808",
+    "customer_id": "cust_108",
+    "status": "COMPLETED",
+    "status_type": "status_v2",
+    "total": 77.5,
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "COMPLETED",
+      "type": "string"
+    }
+  },
+  {
+    "order_id": "ord_809",
+    "customer_id": "cust_109",
+    "status": "COMPLETED",
+    "status_type": "status_v2",
+    "total": 210.0,
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "COMPLETED",
+      "type": "string"
+    }
+  },
+  {
+    "order_id": "ord_810",
+    "status": "SUCCESS",
+    "status_type": "status_v1",
+    "total": 15.0,
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "SUCCESS",
+      "type": "string"
+    }
+  },
+  {
+    "order_id": "ord_811",
+    "customer_id": "cust_111",
+    "status": "FAILED",
+    "status_type": "status_v2",
+    "total": 42.0,
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "FAILED",
+      "type": "string"
+    }
+  },
+  {
+    "order_id": "ord_812",
+    "customer_id": "cust_112",
+    "status": "COMPLETED",
+    "status_type": "status_v2",
+    "total": 65.0,
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "COMPLETED",
+      "type": "string"
+    }
+  },
+  {
+    "order_id": "ord_813",
+    "customer_id": "cust_113",
+    "status": "SUCCESS",
+    "status_type": "status_v1",
+    "total": 88.0,
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "SUCCESS",
+      "type": "string"
+    }
+  },
+  {
+    "order_id": "ord_814",
+    "customer_id": "cust_114",
+    "status": "COMPLETED",
+    "status_type": "status_v2",
+    "total": 14.5,
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "COMPLETED",
+      "type": "string"
+    }
+  },
+  {
+    "order_id": "ord_815",
+    "customer_id": "cust_115",
+    "status": "COMPLETED",
+    "status_type": "status_v2",
+    "total": 130.0,
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "COMPLETED",
+      "type": "string"
+    }
+  }
+]

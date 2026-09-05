@@ -1,0 +1,399 @@
+[
+  {
+    "id": "tx_1001",
+    "user_id": "usr_alpha_01",
+    "amount": 1500,
+    "unit": "cents",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:00:00Z",
+    "field": "amount",
+    "type": "int",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "cents",
+      "type": "int"
+    }
+  },
+  {
+    "id": "tx_1002",
+    "user_id": "usr_beta_02",
+    "amount": 2500,
+    "unit": "cents",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:01:00Z",
+    "field": "amount",
+    "type": "int",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "cents",
+      "type": "int"
+    }
+  },
+  {
+    "id": "tx_1003",
+    "user_id": "usr_gamma_03",
+    "amount": 499,
+    "unit": "cents",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:02:00Z",
+    "field": "amount",
+    "type": "int",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "cents",
+      "type": "int"
+    }
+  },
+  {
+    "id": "tx_1004",
+    "user_id": "usr_delta_04",
+    "amount": 8990,
+    "unit": "cents",
+    "currency": "EUR",
+    "timestamp": "2026-09-05T10:03:00Z",
+    "field": "amount",
+    "type": "int",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "cents",
+      "type": "int"
+    }
+  },
+  {
+    "id": "tx_1005",
+    "amount": 3500,
+    "unit": "cents",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:04:00Z",
+    "field": "amount",
+    "type": "int",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "cents",
+      "type": "int"
+    }
+  },
+  {
+    "id": "tx_1006",
+    "user_id": "usr_zeta_06",
+    "amount": 15.0,
+    "unit": "dollars",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:05:00Z",
+    "field": "amount",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "dollars",
+      "type": "float"
+    }
+  },
+  {
+    "id": "tx_1007",
+    "user_id": "usr_eta_07",
+    "amount": 24.5,
+    "unit": "dollars",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:06:00Z",
+    "field": "amount",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "dollars",
+      "type": "float"
+    }
+  },
+  {
+    "id": "tx_1008",
+    "user_id": "usr_theta_08",
+    "amount": 99.99,
+    "unit": "dollars",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:07:00Z",
+    "field": "amount",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "dollars",
+      "type": "float"
+    }
+  },
+  {
+    "id": "tx_1009",
+    "user_id": "usr_iota_09",
+    "amount": 5.25,
+    "unit": "dollars",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:08:00Z",
+    "field": "amount",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "dollars",
+      "type": "float"
+    }
+  },
+  {
+    "id": "tx_1010",
+    "user_id": "usr_kappa_10",
+    "amount": 120.0,
+    "unit": "dollars",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:09:00Z",
+    "field": "amount",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "dollars",
+      "type": "float"
+    }
+  },
+  {
+    "id": "tx_1011",
+    "user_id": "usr_lambda_11",
+    "amount": 750,
+    "unit": "cents",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:10:00Z",
+    "field": "amount",
+    "type": "int",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "cents",
+      "type": "int"
+    }
+  },
+  {
+    "id": "tx_1012",
+    "amount": 1200,
+    "unit": "cents",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:11:00Z",
+    "field": "amount",
+    "type": "int",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "cents",
+      "type": "int"
+    }
+  },
+  {
+    "id": "tx_1013",
+    "user_id": "usr_mu_13",
+    "amount": 45.0,
+    "unit": "dollars",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:12:00Z",
+    "field": "amount",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "dollars",
+      "type": "float"
+    }
+  },
+  {
+    "id": "tx_1014",
+    "user_id": "usr_nu_14",
+    "amount": 8.75,
+    "unit": "dollars",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:13:00Z",
+    "field": "amount",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "dollars",
+      "type": "float"
+    }
+  },
+  {
+    "id": "tx_1015",
+    "user_id": "usr_xi_15",
+    "amount": 19.99,
+    "unit": "dollars",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:14:00Z",
+    "field": "amount",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "dollars",
+      "type": "float"
+    }
+  },
+  {
+    "id": "tx_1016",
+    "user_id": "usr_omicron_16",
+    "amount": 5000,
+    "unit": "cents",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:15:00Z",
+    "field": "amount",
+    "type": "int",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "cents",
+      "type": "int"
+    }
+  },
+  {
+    "id": "tx_1017",
+    "user_id": "usr_pi_17",
+    "amount": 3.5,
+    "unit": "dollars",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:16:00Z",
+    "field": "amount",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "dollars",
+      "type": "float"
+    }
+  },
+  {
+    "id": "tx_1018",
+    "user_id": "usr_rho_18",
+    "amount": 150.0,
+    "unit": "dollars",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:17:00Z",
+    "field": "amount",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "dollars",
+      "type": "float"
+    }
+  },
+  {
+    "id": "tx_1019",
+    "amount": 6200,
+    "unit": "cents",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:18:00Z",
+    "field": "amount",
+    "type": "int",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "cents",
+      "type": "int"
+    }
+  },
+  {
+    "id": "tx_1020",
+    "user_id": "usr_sigma_20",
+    "amount": 88.0,
+    "unit": "dollars",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:19:00Z",
+    "field": "amount",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "dollars",
+      "type": "float"
+    }
+  },
+  {
+    "id": "tx_1021",
+    "user_id": "usr_tau_21",
+    "amount": 12.5,
+    "unit": "dollars",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:20:00Z",
+    "field": "amount",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "dollars",
+      "type": "float"
+    }
+  },
+  {
+    "id": "tx_1022",
+    "user_id": "usr_upsilon_22",
+    "amount": 3100,
+    "unit": "cents",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:21:00Z",
+    "field": "amount",
+    "type": "int",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "cents",
+      "type": "int"
+    }
+  },
+  {
+    "id": "tx_1023",
+    "user_id": "usr_phi_23",
+    "amount": 64.2,
+    "unit": "dollars",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:22:00Z",
+    "field": "amount",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "dollars",
+      "type": "float"
+    }
+  },
+  {
+    "id": "tx_1024",
+    "user_id": "usr_chi_24",
+    "amount": 10.0,
+    "unit": "dollars",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:23:00Z",
+    "field": "amount",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "dollars",
+      "type": "float"
+    }
+  },
+  {
+    "id": "tx_1025",
+    "user_id": "usr_psi_25",
+    "amount": 250.0,
+    "unit": "dollars",
+    "currency": "USD",
+    "timestamp": "2026-09-05T10:24:00Z",
+    "field": "amount",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "dollars",
+      "type": "float"
+    }
+  }
+]

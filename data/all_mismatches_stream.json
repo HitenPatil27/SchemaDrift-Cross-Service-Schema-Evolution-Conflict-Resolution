@@ -1,0 +1,506 @@
+[
+  {
+    "record_id": "mix_001",
+    "service": "payment",
+    "user_id": "usr_alice",
+    "amount": 1500,
+    "unit": "cents",
+    "timestamp": "2026-09-05T10:00:00Z",
+    "notes": "Baseline standard payment",
+    "field": "amount",
+    "type": "int",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "cents",
+      "type": "int"
+    }
+  },
+  {
+    "record_id": "mix_002",
+    "service": "payment",
+    "user_id": "usr_bob",
+    "amount": 15.0,
+    "unit": "dollars",
+    "timestamp": "2026-09-05T10:01:00Z",
+    "notes": "Currency scale mismatch: float dollars vs integer cents (100x bug)",
+    "field": "amount",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "dollars",
+      "type": "float"
+    }
+  },
+  {
+    "service": "payment",
+    "amount": 2500,
+    "unit": "cents",
+    "timestamp": "2026-09-05T10:02:00Z",
+    "notes": "Structural break: zero identifier provided (missing any *_id)",
+    "field": "amount",
+    "type": "int",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "cents",
+      "type": "int"
+    }
+  },
+  {
+    "record_id": "mix_004",
+    "service": "telemetry",
+    "device_id": "sensor_hvac_01",
+    "temperature": 77.0,
+    "unit": "fahrenheit",
+    "timestamp": "2026-09-05T10:03:00Z",
+    "notes": "Unit mismatch: Fahrenheit (77\u00b0F) vs expected Celsius (25\u00b0C)",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "fahrenheit",
+      "type": "float"
+    }
+  },
+  {
+    "record_id": "mix_005",
+    "service": "telemetry",
+    "device_id": "sensor_hvac_02",
+    "temperature": 22.5,
+    "unit": "celsius",
+    "timestamp": "2026-09-05T10:04:00Z",
+    "notes": "Compatible sensor telemetry",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "celsius",
+      "type": "float"
+    }
+  },
+  {
+    "record_id": "mix_006",
+    "service": "orders",
+    "order_id": "ord_9001",
+    "customer_id": "cust_88",
+    "status": "COMPLETED",
+    "status_type": "status_v2",
+    "total": 85.0,
+    "notes": "Categorical enum mismatch: modern COMPLETED vs legacy SUCCESS",
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "COMPLETED",
+      "type": "string"
+    }
+  },
+  {
+    "record_id": "mix_007",
+    "service": "orders",
+    "order_id": "ord_9002",
+    "customer_id": "cust_89",
+    "status": "FAILED",
+    "status_type": "status_v2",
+    "total": 12.0,
+    "notes": "Categorical enum mismatch: modern FAILED vs legacy ERROR",
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "FAILED",
+      "type": "string"
+    }
+  },
+  {
+    "service": "orders",
+    "status": "SUCCESS",
+    "status_type": "status_v1",
+    "total": 50.0,
+    "notes": "Structural break: zero identifier provided (missing any *_id)",
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "SUCCESS",
+      "type": "string"
+    }
+  },
+  {
+    "record_id": "mix_009",
+    "service": "performance",
+    "service_name": "checkout_api",
+    "latency": 1500,
+    "latency_unit": "milliseconds",
+    "timestamp": 1705316400,
+    "notes": "Scale mismatch: latency in ms (1500ms) vs microseconds (1500000us)",
+    "field": "latency",
+    "type": "int",
+    "required": true,
+    "semantic": {
+      "kind": "scale",
+      "value": "milliseconds",
+      "type": "int"
+    }
+  },
+  {
+    "record_id": "mix_010",
+    "service": "temporal",
+    "event_id": "evt_trace_101",
+    "timestamp": 1705316400,
+    "timestamp_unit": "epoch_seconds",
+    "notes": "Time unit mismatch: epoch seconds vs epoch milliseconds",
+    "field": "timestamp",
+    "type": "int",
+    "required": true,
+    "semantic": {
+      "kind": "temporal",
+      "value": "epoch_seconds",
+      "type": "int"
+    }
+  },
+  {
+    "record_id": "mix_011",
+    "service": "payment",
+    "user_id": "usr_charlie",
+    "amount": 24.5,
+    "unit": "dollars",
+    "timestamp": "2026-09-05T10:10:00Z",
+    "notes": "Currency scale drift: $24.50 -> 2450 cents",
+    "field": "amount",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "dollars",
+      "type": "float"
+    }
+  },
+  {
+    "record_id": "mix_012",
+    "service": "payment",
+    "user_id": "usr_david",
+    "amount": 499,
+    "unit": "cents",
+    "timestamp": "2026-09-05T10:11:00Z",
+    "notes": "Compatible payment record",
+    "field": "amount",
+    "type": "int",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "cents",
+      "type": "int"
+    }
+  },
+  {
+    "record_id": "mix_013",
+    "service": "telemetry",
+    "device_id": "sensor_engine_03",
+    "temperature": 86.0,
+    "unit": "fahrenheit",
+    "timestamp": "2026-09-05T10:12:00Z",
+    "notes": "Temperature drift: 86\u00b0F -> 30\u00b0C",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "fahrenheit",
+      "type": "float"
+    }
+  },
+  {
+    "service": "telemetry",
+    "temperature": 95.0,
+    "unit": "fahrenheit",
+    "timestamp": "2026-09-05T10:13:00Z",
+    "notes": "Structural break: zero identifier provided (missing any *_id)",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "fahrenheit",
+      "type": "float"
+    }
+  },
+  {
+    "record_id": "mix_015",
+    "service": "orders",
+    "order_id": "ord_9003",
+    "customer_id": "cust_90",
+    "status": "SUCCESS",
+    "status_type": "status_v1",
+    "total": 34.0,
+    "notes": "Compatible legacy order record",
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "SUCCESS",
+      "type": "string"
+    }
+  },
+  {
+    "record_id": "mix_016",
+    "service": "orders",
+    "order_id": "ord_9004",
+    "customer_id": "cust_91",
+    "status": "COMPLETED",
+    "status_type": "status_v2",
+    "total": 110.0,
+    "notes": "Enum drift: COMPLETED -> SUCCESS",
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "COMPLETED",
+      "type": "string"
+    }
+  },
+  {
+    "record_id": "mix_017",
+    "service": "payment",
+    "user_id": "usr_eva",
+    "amount": 99.99,
+    "unit": "dollars",
+    "timestamp": "2026-09-05T10:16:00Z",
+    "notes": "Currency scale drift: $99.99 -> 9999 cents",
+    "field": "amount",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "dollars",
+      "type": "float"
+    }
+  },
+  {
+    "service": "payment",
+    "amount": 8900,
+    "unit": "cents",
+    "timestamp": "2026-09-05T10:17:00Z",
+    "notes": "Structural break: zero identifier provided (missing any *_id)",
+    "field": "amount",
+    "type": "int",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "cents",
+      "type": "int"
+    }
+  },
+  {
+    "record_id": "mix_019",
+    "service": "telemetry",
+    "device_id": "sensor_chiller_04",
+    "temperature": 68.0,
+    "unit": "fahrenheit",
+    "timestamp": "2026-09-05T10:18:00Z",
+    "notes": "Temperature drift: 68\u00b0F -> 20\u00b0C",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "fahrenheit",
+      "type": "float"
+    }
+  },
+  {
+    "record_id": "mix_020",
+    "service": "telemetry",
+    "device_id": "sensor_chiller_05",
+    "temperature": 21.0,
+    "unit": "celsius",
+    "timestamp": "2026-09-05T10:19:00Z",
+    "notes": "Compatible telemetry record",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "celsius",
+      "type": "float"
+    }
+  },
+  {
+    "record_id": "mix_021",
+    "service": "performance",
+    "service_name": "auth_service",
+    "latency": 2500,
+    "latency_unit": "milliseconds",
+    "timestamp": 1705316401,
+    "notes": "Scale drift: 2500ms -> 2500000us",
+    "field": "latency",
+    "type": "int",
+    "required": true,
+    "semantic": {
+      "kind": "scale",
+      "value": "milliseconds",
+      "type": "int"
+    }
+  },
+  {
+    "record_id": "mix_022",
+    "service": "orders",
+    "order_id": "ord_9005",
+    "customer_id": "cust_92",
+    "status": "COMPLETED",
+    "status_type": "status_v2",
+    "total": 45.5,
+    "notes": "Enum drift: COMPLETED -> SUCCESS",
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "COMPLETED",
+      "type": "string"
+    }
+  },
+  {
+    "record_id": "mix_023",
+    "service": "payment",
+    "user_id": "usr_frank",
+    "amount": 5.25,
+    "unit": "dollars",
+    "timestamp": "2026-09-05T10:22:00Z",
+    "notes": "Currency drift: $5.25 -> 525 cents",
+    "field": "amount",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "dollars",
+      "type": "float"
+    }
+  },
+  {
+    "record_id": "mix_024",
+    "service": "payment",
+    "user_id": "usr_grace",
+    "amount": 3200,
+    "unit": "cents",
+    "timestamp": "2026-09-05T10:23:00Z",
+    "notes": "Compatible payment record",
+    "field": "amount",
+    "type": "int",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "cents",
+      "type": "int"
+    }
+  },
+  {
+    "record_id": "mix_025",
+    "service": "telemetry",
+    "device_id": "sensor_boiler_06",
+    "temperature": 104.0,
+    "unit": "fahrenheit",
+    "timestamp": "2026-09-05T10:24:00Z",
+    "notes": "Temperature drift: 104\u00b0F -> 40\u00b0C",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "fahrenheit",
+      "type": "float"
+    }
+  },
+  {
+    "record_id": "mix_026",
+    "service": "temporal",
+    "event_id": "evt_trace_102",
+    "timestamp": 1705316402,
+    "timestamp_unit": "epoch_seconds",
+    "notes": "Time unit drift: seconds -> milliseconds",
+    "field": "timestamp",
+    "type": "int",
+    "required": true,
+    "semantic": {
+      "kind": "temporal",
+      "value": "epoch_seconds",
+      "type": "int"
+    }
+  },
+  {
+    "record_id": "mix_027",
+    "service": "orders",
+    "order_id": "ord_9006",
+    "customer_id": "cust_93",
+    "status": "FAILED",
+    "status_type": "status_v2",
+    "total": 19.99,
+    "notes": "Enum drift: FAILED -> ERROR",
+    "field": "status",
+    "type": "string",
+    "required": true,
+    "semantic": {
+      "kind": "enum",
+      "value": "FAILED",
+      "type": "string"
+    }
+  },
+  {
+    "record_id": "mix_028",
+    "service": "payment",
+    "user_id": "usr_heidi",
+    "amount": 120.0,
+    "unit": "dollars",
+    "timestamp": "2026-09-05T10:27:00Z",
+    "notes": "Currency drift: $120.00 -> 12000 cents",
+    "field": "amount",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "dollars",
+      "type": "float"
+    }
+  },
+  {
+    "service": "payment",
+    "amount": 1500,
+    "unit": "cents",
+    "timestamp": "2026-09-05T10:28:00Z",
+    "notes": "Structural break: zero identifier provided (missing any *_id)",
+    "field": "amount",
+    "type": "int",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "cents",
+      "type": "int"
+    }
+  },
+  {
+    "record_id": "mix_030",
+    "service": "telemetry",
+    "device_id": "sensor_intake_07",
+    "temperature": 50.0,
+    "unit": "fahrenheit",
+    "timestamp": "2026-09-05T10:29:00Z",
+    "notes": "Temperature drift: 50\u00b0F -> 10\u00b0C",
+    "field": "temperature",
+    "type": "float",
+    "required": true,
+    "semantic": {
+      "kind": "unit",
+      "value": "fahrenheit",
+      "type": "float"
+    }
+  }
+]
