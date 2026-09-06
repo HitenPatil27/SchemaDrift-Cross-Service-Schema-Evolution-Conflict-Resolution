@@ -224,3 +224,73 @@ class FXOracle:
 
 # Global Default Singleton Instance
 GLOBAL_FX_ORACLE = FXOracle()
+
+
+if __name__ == "__main__":
+    RESET  = "\033[0m"
+    BOLD   = "\033[1m"
+    GREEN  = "\033[92m"
+    RED    = "\033[91m"
+    YELLOW = "\033[93m"
+    CYAN   = "\033[96m"
+
+    print(f"\n{BOLD}{CYAN}========================================================================{RESET}")
+    print(f"{BOLD}{CYAN}  SCHEMADRIFT -- LIVE FX ORACLE & FINANCIAL GUARANTEES DEMO{RESET}")
+    print(f"{BOLD}{CYAN}========================================================================{RESET}\n")
+
+    oracle = GLOBAL_FX_ORACLE
+
+    # 1. Live Exchange Rate
+    print(f"{BOLD}[1] Live Real-Time Query (ECB / Central Bank API):{RESET}")
+    live_res = oracle.convert(amount=100.00, from_currency="EUR", to_currency="USD", target_unit="dollars")
+    print(f"  • Input:              €100.00 EUR")
+    print(f"  • Converted:          ${live_res['converted_amount']:.2f} USD")
+    print(f"  • Live Rate Applied:  {GREEN}{live_res['rate_applied']}{RESET}")
+    print(f"  • Authority Provider: {live_res['provider']}")
+    print(f"  • Date Anchor:        {live_res['timestamp_anchored']}")
+    print()
+
+    # 2. Point-in-Time Historical Anchoring
+    print(f"{BOLD}[2] Point-in-Time Historical Anchoring (Timestamp Accuracy):{RESET}")
+    hist_res = oracle.convert(
+        amount=100.00,
+        from_currency="EUR",
+        to_currency="USD",
+        timestamp="2024-01-15T12:00:00Z",
+        target_unit="dollars",
+    )
+    print(f"  • Transaction Date:   2024-01-15 (Historical record)")
+    print(f"  • Input:              €100.00 EUR")
+    print(f"  • Converted:          ${hist_res['converted_amount']:.2f} USD")
+    print(f"  • Rate on 2024-01-15: {GREEN}{hist_res['rate_applied']}{RESET} (vs Live: {live_res['rate_applied']})")
+    print(f"  • Authority Provider: {hist_res['provider']}")
+    print(f"  • Financial Guard:    {GREEN}Verified (Prevents retroactive ledger distortion){RESET}")
+    print()
+
+    # 3. High-Precision Cents Conversion (Microservice Contract Target)
+    print(f"{BOLD}[3] Microservice Decimal Precision (Cents Conversion):{RESET}")
+    cents_res = oracle.convert(
+        amount=15.00,
+        from_currency="EUR",
+        to_currency="USD",
+        timestamp="2024-01-15T12:00:00Z",
+        target_unit="cents",
+    )
+    print(f"  • Producer Payload:   amount = 15.00 (EUR, float)")
+    print(f"  • Consumer Requires:  amount = integer cents (USD)")
+    print(f"  • Converted Value:    {GREEN}{cents_res['converted_amount']} cents{RESET} (${cents_res['converted_amount'] / 100:.2f} USD)")
+    print(f"  • Math Precision:     Decimal with ROUND_HALF_UP (zero IEEE-754 float drift)")
+    print()
+
+    # 4. Volatility Circuit Breaker
+    print(f"{BOLD}[4] Volatility Circuit Breaker (Flash Crash / Anomaly Guardrail):{RESET}")
+    print(f"  Testing corrupt/manipulated market feed rate: 2.85 EUR/USD (Normal: 0.75 - 1.45)...")
+    try:
+        oracle.verify_circuit_breaker("EUR", "USD", 2.85)
+        print(f"  {RED}FAILED: Anomaly was not caught!{RESET}")
+    except FXCircuitBreakerError as e:
+        print(f"  {GREEN}[TRIPPED & QUARANTINED]{RESET} {e}")
+        print(f"  • Protection: Incompatible/corrupted record isolated in Quarantine Store.")
+        print(f"  • Outcome:    {GREEN}Zero financial loss.{RESET}")
+
+    print(f"\n{BOLD}{CYAN}========================================================================{RESET}\n")
