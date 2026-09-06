@@ -176,7 +176,11 @@ class SchemaRegistry:
         """Return a new record with the transform applied to the relevant field."""
         result = copy.deepcopy(record)
         if transform.field_name in result:
-            result[transform.field_name] = transform.transform_fn(
-                result[transform.field_name]
-            )
+            val = result[transform.field_name]
+            try:
+                # Try contextual transform (value, full_record) e.g. for timestamped FX
+                result[transform.field_name] = transform.transform_fn(val, result)
+            except TypeError:
+                # Standard single-argument transform (value)
+                result[transform.field_name] = transform.transform_fn(val)
         return result

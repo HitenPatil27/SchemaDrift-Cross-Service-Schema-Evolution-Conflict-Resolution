@@ -721,6 +721,39 @@ def main() -> None:
         )
         print()
 
+        # --- 6f: Dynamic Live FX Oracle & Timestamp-Anchored Currency Adaptation ---
+        print(f"  {BOLD}{CYAN}[6f] Live FX Oracle & Timestamp-Anchored Currency Exchange{RESET}")
+        print(f"  {DIM}Ensuring amounts use current/timestamped exchange rates, decimal precision & circuit breakers:{RESET}\n")
+
+        from fx_oracle import GLOBAL_FX_ORACLE, FXCircuitBreakerError
+
+        # Test point-in-time rate lookup (historical transaction on 2024-01-15)
+        historical_fx = GLOBAL_FX_ORACLE.convert(
+            amount=15.00,
+            from_currency="EUR",
+            to_currency="USD",
+            timestamp="2024-01-15T12:00:00Z",
+            target_unit="cents",
+        )
+        print(f"  Point-in-Time FX (2024-01-15): €15.00 EUR -> {historical_fx['converted_amount']} USD cents (Rate: {historical_fx['rate_applied']}, Provider: {historical_fx['provider']})")
+        assert_check(
+            historical_fx["converted_amount"] > 1500 and historical_fx["circuit_breaker_passed"],
+            "FX Oracle: point-in-time exchange rate anchored to transaction timestamp",
+        )
+
+        # Test Volatility Circuit Breaker guards against corrupt/deviant rates
+        circuit_tripped = False
+        try:
+            GLOBAL_FX_ORACLE.verify_circuit_breaker("EUR", "USD", 2.95)
+        except FXCircuitBreakerError:
+            circuit_tripped = True
+
+        assert_check(
+            circuit_tripped,
+            "FX Circuit Breaker: trips on anomalous rate (2.95 EUR/USD) preventing financial loss",
+        )
+        print()
+
     # -- Summary -----------------------------------------------------------
     banner("Final Summary")
     stats = store.stats()

@@ -372,10 +372,12 @@ rec_004 / analytics-service  : SEMANTIC_INCOMPATIBLE  -> RELEASED     (v4, fixed
 | `quarantine.py` | Quarantine store + scoped correction job |
 | `ai_advisor.py` | AI semantic analysis, transform suggestion, incident report (Groq/Llama) |
 | `demo.py` | Full 6-step scenario with 27 automated assertions |
+| `fx_oracle.py` | Live FX Oracle, timestamp-anchored rates, and volatility circuit breaker |
+| `benchmark.py` | Automated complexity, latency percentiles, and reliability benchmark |
 | `README.md` | Technical documentation |
 | `EXPLANATION.md` | This file -- jury presentation script |
 
 **Language:** Python + Groq SDK (single external dependency)
 **AI Model:** Qwen 3.8 27B via Groq (free tier, fast inference)
-**Assertions:** 28/28 passing (18 rule-based including rolling deployment + 6 matrix + 4 self-healing)
-**Note:** AI-dependent assertions (Steps 6a–6e) require a valid GROQ_API_KEY; they are skipped gracefully if unavailable.
+**Assertions:** 30/30 passing (18 rule-based + 6 universal drift matrix + 4 self-healing + 2 FX Oracle & Circuit Breaker)
+**Live FX Oracle:** Real-time ECB central bank rates, historical timestamp anchoring, and decimal financial precision.

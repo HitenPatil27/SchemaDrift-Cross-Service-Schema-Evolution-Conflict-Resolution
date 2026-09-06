@@ -27,6 +27,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 from groq import Groq
+from fx_oracle import GLOBAL_FX_ORACLE
 
 
 # --- AI Client ----------------------------------------------------------------
@@ -177,6 +178,16 @@ def _fallback_suggest_transform(
             "example_output": round(float(val) / 1048576.0, 2),
             "confidence": "high",
         }
+    elif ("eur" in fu or "euro" in fu) and ("usd" in tu or "cent" in tu or "dollar" in tu):
+        val = sample_value if sample_value is not None else 15.0
+        res = GLOBAL_FX_ORACLE.convert(val, "EUR", "USD", target_unit="cents")
+        return {
+            "transform_description": f"Convert EUR to USD cents via Live/Timestamped FX Oracle ({res['provider']}, Rate: {res['rate_applied']})",
+            "transform_formula": "GLOBAL_FX_ORACLE.convert(value, 'EUR', 'USD', timestamp)['converted_amount']",
+            "example_input": val,
+            "example_output": res["converted_amount"],
+            "confidence": "high",
+        }
 
     return {
         "transform_description": f"Convert {from_unit or 'source'} to {to_unit or 'target'}",
@@ -230,6 +241,12 @@ def _fallback_synthesize_universal_transform(
     elif "status" in field_name.lower() or "code" in field_name.lower() or fe == "enum":
         lam_str = "lambda value: {'COMPLETED': 'SUCCESS', 'PENDING': 'IN_PROGRESS', 'FAILED': 'ERROR'}.get(str(value).upper(), str(value))"
         desc = "Map categorical status codes to consumer enum standard"
+    elif ("eur" in fu or "euro" in fu) and ("usd" in tu or "cent" in tu or "dollar" in tu):
+        lam_str = "lambda value, rec=None: GLOBAL_FX_ORACLE.convert(value, 'EUR', 'USD', (rec or {}).get('timestamp'), target_unit='cents')['converted_amount']"
+        desc = "Convert EUR to USD cents via live/timestamped FX Oracle with volatility circuit breaker"
+    elif ("usd" in fu or "dollar" in fu) and ("eur" in tu or "euro" in tu):
+        lam_str = "lambda value, rec=None: GLOBAL_FX_ORACLE.convert(value, 'USD', 'EUR', (rec or {}).get('timestamp'), target_unit='cents')['converted_amount']"
+        desc = "Convert USD to EUR cents via live/timestamped FX Oracle with volatility circuit breaker"
     else:
         lam_str = "lambda value: value"
         desc = f"Direct identity transform for {field_name}"
@@ -244,6 +261,7 @@ def _fallback_synthesize_universal_transform(
         "str": str,
         "round": round,
         "dict": dict,
+        "GLOBAL_FX_ORACLE": GLOBAL_FX_ORACLE,
     }
 
     try:
@@ -495,6 +513,7 @@ Synthesize a single-line Python lambda expression `lambda value: ...` to convert
             "str": str,
             "round": round,
             "dict": dict,
+            "GLOBAL_FX_ORACLE": GLOBAL_FX_ORACLE,
         }
 
         transform_fn = eval(lam_str, safe_env)
