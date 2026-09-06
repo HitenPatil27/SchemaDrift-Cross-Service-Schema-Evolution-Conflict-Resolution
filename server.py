@@ -39,6 +39,7 @@ from quarantine import (
     QuarantineStore,
 )
 import ai_advisor
+from fx_oracle import GLOBAL_FX_ORACLE, normalize_currency
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
@@ -170,6 +171,23 @@ class BatchStreamProcessor:
             "epoch seconds → epoch milliseconds: ×1000",
         ))
 
+        # -- Universal World Currency Schemas & Transforms (Powered by FX Oracle) --
+        self.sem_cents = sem_cents
+        for curr in ["EUR", "GBP", "JPY", "CAD", "INR", "CHF", "AUD", "CNY", "BRL", "MXN"]:
+            sem_curr = SemanticDescriptor(curr.lower(), "float")
+            self.registry.register_schema(SchemaVersion("payment", f"v_{curr.lower()}", {
+                "user_id": FieldDef("user_id", str, True),
+                "amount": FieldDef("amount", float, True, sem_curr),
+                "timestamp": FieldDef("timestamp", str, True),
+            }))
+            self.registry.register_transform(SemanticTransform(
+                "amount", sem_curr, sem_cents,
+                lambda v, r=None, c=curr: GLOBAL_FX_ORACLE.convert(
+                    v, c, "USD", (r or {}).get("timestamp"), target_unit="cents"
+                )["converted_amount"],
+                f"{curr} (float) → USD cents (int) via Live/Timestamped FX Oracle",
+            ))
+
     # -- Helpers ---------------------------------------------------------------
 
     def _domain_ids(self, rec: dict) -> list[str]:
@@ -211,8 +229,25 @@ class BatchStreamProcessor:
         sem_val = rec.get("semantic", {}).get("value", "")
 
         if "amount" in rec:
-            if sem_val == "dollars" or rec.get("unit") == "dollars":
-                return "payment:v2", "amount"
+            raw_curr = rec.get("currency", rec.get("unit", sem_val))
+            curr = normalize_currency(raw_curr) if raw_curr else "USD"
+            if curr != "USD" or sem_val == "dollars" or rec.get("unit") == "dollars":
+                schema_name = f"payment:v_{curr.lower()}" if curr != "USD" else "payment:v2"
+                if not self.registry.get_schema(schema_name):
+                    sem_curr = SemanticDescriptor(curr.lower(), "float" if isinstance(rec.get("amount"), float) else "integer")
+                    self.registry.register_schema(SchemaVersion("payment", f"v_{curr.lower()}", {
+                        "user_id": FieldDef("user_id", str, True),
+                        "amount": FieldDef("amount", float if isinstance(rec.get("amount"), float) else int, True, sem_curr),
+                        "timestamp": FieldDef("timestamp", str, True),
+                    }))
+                    self.registry.register_transform(SemanticTransform(
+                        "amount", sem_curr, self.sem_cents,
+                        lambda v, r=None, c=curr: GLOBAL_FX_ORACLE.convert(
+                            v, c, "USD", (r or {}).get("timestamp"), target_unit="cents"
+                        )["converted_amount"],
+                        f"{curr} → USD cents via Live/Timestamped FX Oracle",
+                    ))
+                return schema_name, "amount"
             return "payment:v1", "amount"
 
         if "temperature" in rec:
