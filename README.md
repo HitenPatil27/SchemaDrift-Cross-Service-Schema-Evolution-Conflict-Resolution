@@ -65,6 +65,10 @@ They completely miss **semantic divergence**:
 
 SchemaDrift enforces an uncompromising separation of concerns between **Structural Invariants** and **Semantic Contracts**:
 
+<p align="center">
+  <img src="System Architecture1.png" alt="SchemaDrift System Architecture Diagram" width="100%" />
+</p>
+
 ```
 Producer Event Stream (JSON / Kafka / REST)
                    │
@@ -291,7 +295,7 @@ curl -X POST http://localhost:8000/api/process-batch \
 ├── README.md                        # Project documentation, quickstart & benchmarks
 ├── EXPLANATION.md                   # In-depth architectural rationale & design decisions
 ├── PRD.md                           # Hackathon challenge problem statement specification
-├── System Architecture.png          # High-resolution architectural diagram
+├── System Architecture1.png         # High-resolution architectural diagram
 │
 ├── schema_registry.py               # Versioned schemas, consumer registry, transform catalog
 ├── engine.py                        # Two-layer validation engine with JIT auto-healing

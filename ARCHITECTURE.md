@@ -10,6 +10,10 @@ SchemaDrift guarantees zero downstream data corruption by enforcing a strict **T
 
 ## 2. High-Level System Architecture Diagram
 
+<p align="center">
+  <img src="System Architecture1.png" alt="SchemaDrift High-Level System Architecture" width="100%" />
+</p>
+
 ```mermaid
 flowchart TD
     subgraph Ingestion ["1. INGESTION & DISPATCH"]
@@ -175,6 +179,7 @@ sequenceDiagram
 ├── README.md                        # Quickstart, live control center, and developer guide
 ├── EXPLANATION.md                   # Detailed walkthrough of validation layers
 ├── PRD.md                           # Hackathon problem statement specification
+├── System Architecture1.png         # High-resolution architectural diagram
 │
 ├── schema_registry.py               # Versioned schemas, consumer registry, transform catalog
 ├── engine.py                        # Two-layer validation engine with JIT auto-heal
